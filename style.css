@@ -1,0 +1,271 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    background-image: url(./Assets/background.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+/* Header */
+
+header{
+    background-color: #85E6C0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Logo{
+    display: flex;
+    width: 5vw;
+    margin-left: 2rem;
+}
+
+.menu{
+    display: flex;
+    gap: 5px;
+    margin-right: 2rem;
+    order: 2;
+    font-size: 20px;
+}
+
+a{
+    color: #0B0B0D;
+    text-decoration: none;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+}
+
+a:hover{
+    transform: scale(1.1);
+    margin: 0;
+}
+
+/* index */
+
+.index{
+    display: flex;
+}
+
+.foto-perfil{
+    display: flex;
+    align-items: center;
+    padding-left: 5rem;
+}
+
+.foto{
+    height: 50vh;
+    border-radius: 100%;
+}
+
+.Textos{
+    color: #f7f4e8;
+    padding-left: 10rem;
+}
+
+.texto{
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    padding: 4vh;  
+    text-align: justify;
+}
+
+.texto p{
+    padding-right: 5rem;
+}
+
+/* Skills */
+
+.Skills{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-default{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #f7f4e8;
+    margin-top: 5rem;
+}
+
+.text{
+    display: flex;
+    gap: 5rem;
+    color: #f7f4e8;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5rem;
+    margin-top: 3rem;
+}
+
+.Programing{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.languages{
+    display: flex;
+    gap: 3rem;
+}
+
+.languages div{
+    display: flex;
+    gap: 8vh;
+}
+
+.languages img{
+    height: 15vh;
+    transform: translateX(-200%);
+    animation: slideIn 1.5s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-1000%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Projects */
+
+.text-project{
+    display: flex;
+    gap: 5rem;
+    color: #f7f4e8;
+    font-weight: bold;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    padding-left: 25rem;
+    padding-right: 25rem;
+}
+
+#title-project{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #f7f4e8;
+    margin-top: 5rem;
+}
+
+.Project{
+    overflow-x: hidden;
+}
+
+.Projects{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+}
+
+/* Footer */
+
+footer{
+    background-color: #85E6C0;
+    display: flex;
+    align-items: center;
+    height: 3rem;
+}
+
+#textofooter{
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+}
+
+.social-media{
+    margin-right: 2rem;
+    gap: 2rem;
+}
+
+/* Responsividade */
+
+@media screen and (max-width: 767px) {
+    /* Header */
+    .Logo{
+        width: 15vw;
+    }
+
+    .menu{
+        font-size: 15px;
+    }
+
+    /* home */
+
+    .index{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .foto{
+        height: 30vh;
+    }
+
+    .foto-perfil{
+        height: 40vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .Textos{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .texto p{
+        padding: 0;
+    }
+
+    /* Skills */
+
+    .title-default{
+        margin-right: 10vh;
+        margin-left: 10vh;
+    }
+
+    .languages{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text{
+        display: flex;
+        flex-direction: column;
+        padding-left: 15vh;
+    }
+
+    /* Projects */
+
+    #title-project{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: #f7f4e8;
+        margin-top: 5rem;
+    }
+
+    .text-project{
+        display: flex;
+        padding: 15px;
+    }
+
+}
