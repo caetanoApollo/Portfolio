@@ -241,6 +241,14 @@ footer{
         margin-left: 10vh;
     }
 
+    .Programing{
+        width: 100vw;
+    }
+
+    section{
+        width: 100vw;
+    }
+
     .languages{
         display: flex;
         flex-direction: column;
@@ -248,10 +256,10 @@ footer{
 
     .text{
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
-        padding-left: 15vh;
     }
-
     /* Projects */
 
     #title-project{
