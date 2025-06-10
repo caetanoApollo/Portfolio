@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         case 'estacionamento':
                             repo.custom_title = 'Estacionamento';
                             repo.custom_description = 'App desenvolvido para gerenciar um estacionamento, com funcionalidades de cadastro de veículos, controle de entrada e saída, e geração de relatórios.Atividade feita em aula de React Native.';
-                            repo.custom_language = 'TypeScript, React Native, Node.js & Expo';
+                            repo.custom_language = 'JavaScript, React Native, Node.js & Expo';
                             break;
                         case 'cloud_village':
                             repo.custom_title = 'Cloud Village';
