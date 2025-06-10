@@ -39,6 +39,10 @@ body {
     /* slate-800 */
 }
 
+#about-text{
+    text-align: justify;
+}
+
 /* TÍTULOS DE SEÇÃO */
 .section-title {
     position: relative;
