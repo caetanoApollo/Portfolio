@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         about: `Sou Caetano Apollo, programador full-stack em formação, com foco em automações inteligentes e soluções digitais eficientes. Atualmente, atuo no Grupo Carburgo, onde desenvolvo automações utilizando Python para otimizar processos internos. Também possuo experiência anterior na área administrativa e contábil, o que me permite ter uma visão ampla de negócios e aplicação prática da tecnologia no dia a dia corporativo.`,
         skills: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js', 'Styled-Components', 'HTML5', 'CSS3', 'Git', 'GitHub', 'SQL', 'PostgreSQL', 'Python', 'Figma', 'Bootstrap',],
         experience: [
-            { role: 'Desenvolvedor de automações', company: 'Grupo Carburgo', period: 'Out 2024 - Presente', description: 'Atuo na área de automação de processos internos, desenvolvendo soluções com Python para otimizar tarefas rotineiras e aumentar a eficiência operacional. Participo da identificação de oportunidades de automação, criação de scripts e integração entre sistemas, contribuindo diretamente para a transformação digital do grupo.' },
+            { role: 'Desenvolvedor de automações', company: 'Grupo Carburgo', period: 'Out 2024 - Set 2025', description: 'Atuo na área de automação de processos internos, desenvolvendo soluções com Python para otimizar tarefas rotineiras e aumentar a eficiência operacional. Participo da identificação de oportunidades de automação, criação de scripts e integração entre sistemas, contribuindo diretamente para a transformação digital do grupo.' },
             { role: 'Estágiario Administrativo', company: 'IELB', period: 'jan 2024 - Jun 2024', description: 'Prestei suporte às rotinas administrativas e financeiras da secretaria, realizando atividades como: Lançamento e controle de contas a receber, atualização e organização de cadastro de membros, emissão de relatórios administrativos, apoio em demandas gerais do setor, contribuindo para o bom funcionamento das operações diárias' },
             { role: 'Auxiliar administrativo', company: 'Doctor Clin', period: 'Set 2021 - Fev 2023', description: 'Durante 1 ano e 6 meses, atuei no setor contábil, desempenhando tarefas fundamentais como: organização e arquivamento de documentos contábeis, elaboração de planilhas e relatórios financeiros, lançamento de notas e apoio no controle de despesas. Desenvolvi habilidades essenciais como atenção aos detalhes, proatividade e comprometimento em ambientes corporativos.' }
         ]
@@ -260,3 +260,4 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchGithubData();
     populateLinkedInData();
 });
+
