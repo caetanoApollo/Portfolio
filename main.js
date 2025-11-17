@@ -1,263 +1,271 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- INICIALIZAÇÃO DA ROLAGEM SUAVE (LENIS) ---
-    const lenis = new Lenis();
+    // --- 1. DADOS DO PORTFÓLIO ---
+    const PORTFOLIO_DATA = {
+        githubUsername: "caetanoApollo",
+        linkedinData: {
+            about: "Sou Caetano Apollo, desenvolvedor Full Stack e especialista em automação. Transformo processos manuais em ecossistemas digitais eficientes. Atualmente na Portal Brasil, foco em Power Automate e Python para criar soluções que geram impacto real. Tenho background administrativo, o que me dá uma visão única de negócio x código.",
+            skills: [
+                "JavaScript", "TypeScript", "React Native", "Power Automate",
+                "Python", "Node.js", "SQL", "Git", "Office 365", "Figma"
+            ],
+            experience: [
+                {
+                    role: "Jovem Aprendiz",
+                    company: "Portal Brasil",
+                    period: "Nov 2025 - Presente",
+                    description: "Desenvolvimento de automações estratégicas utilizando Power Automate para otimização de workflows corporativos e redução de retrabalho manual."
+                },
+                {
+                    role: "Trainee de TI",
+                    company: "Grupo Carburgo",
+                    period: "Out 2024 - Set 2025",
+                    description: "Criação de scripts em Python para automação de processos internos e integração entre sistemas legados."
+                },
+                {
+                    role: "Estagiário Administrativo",
+                    company: "IELB",
+                    period: "Jan 2024 - Jun 2024",
+                    description: "Suporte administrativo e financeiro, garantindo a integridade de dados e relatórios gerenciais."
+                },
+                {
+                    role: "Auxiliar Administrativo",
+                    company: "Doctor Clin",
+                    period: "Set 2021 - Fev 2023",
+                    description: "Gestão documental e financeira no setor contábil, desenvolvendo organização e análise crítica."
+                }
+            ]
+        },
+        featuredProjects: [
+            {
+                repoName: "BizManager",
+                customTitle: "BizManager",
+                customDescription: "Plataforma completa para gestão de microempreendimentos.",
+                customLanguage: "React Native & TypeScript",
+                tags: ["Mobile", "Gestão"]
+            },
+            {
+                repoName: "estacionamento",
+                customTitle: "Smart Park",
+                customDescription: "Sistema de controle de fluxo de veículos com relatórios em tempo real.",
+                customLanguage: "React Native",
+                tags: ["Mobile", "Utilitário"]
+            },
+            {
+                repoName: "Finance-controller",
+                customTitle: "Finance Controller",
+                customDescription: "Aplicação Desktop para gestão financeira pessoal e visualização de dados.",
+                customLanguage: "Python & PyQt5",
+                tags: ["Desktop", "Finanças"]
+            },
+            {
+                repoName: "cloud_village",
+                customTitle: "Cloud Village",
+                customDescription: "Sistema Web para administração de condomínios e portaria.",
+                customLanguage: "Node.js & Express",
+                tags: ["Web", "Fullstack"]
+            }
+        ]
+    };
+
+    // --- 2. INICIALIZAÇÃO DO LENIS (SCROLL SUAVE) ---
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true
+    });
     function raf(time) {
         lenis.raf(time);
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
 
-    // Adiciona o smooth scroll para os links de âncora do menu
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                lenis.scrollTo(targetElement);
-            }
-        });
-    });
-
-    // --- CONFIGURAÇÕES E DADOS ---
-    const GITHUB_USERNAME = 'caetanoApollo';
-    const LINKEDIN_DATA = {
-        about: `Sou Caetano Apollo, programador full-stack em formação, com foco em automações inteligentes e soluções digitais eficientes. Atualmente, atuo no Grupo Carburgo, onde desenvolvo automações utilizando Python para otimizar processos internos. Também possuo experiência anterior na área administrativa e contábil, o que me permite ter uma visão ampla de negócios e aplicação prática da tecnologia no dia a dia corporativo.`,
-        skills: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js', 'Styled-Components', 'HTML5', 'CSS3', 'Git', 'GitHub', 'SQL', 'PostgreSQL', 'Python', 'Figma', 'Bootstrap',],
-        experience: [
-            { role: 'Desenvolvedor de automações', company: 'Grupo Carburgo', period: 'Out 2024 - Set 2025', description: 'Atuo na área de automação de processos internos, desenvolvendo soluções com Python para otimizar tarefas rotineiras e aumentar a eficiência operacional. Participo da identificação de oportunidades de automação, criação de scripts e integração entre sistemas, contribuindo diretamente para a transformação digital do grupo.' },
-            { role: 'Estágiario Administrativo', company: 'IELB', period: 'jan 2024 - Jun 2024', description: 'Prestei suporte às rotinas administrativas e financeiras da secretaria, realizando atividades como: Lançamento e controle de contas a receber, atualização e organização de cadastro de membros, emissão de relatórios administrativos, apoio em demandas gerais do setor, contribuindo para o bom funcionamento das operações diárias' },
-            { role: 'Auxiliar administrativo', company: 'Doctor Clin', period: 'Set 2021 - Fev 2023', description: 'Durante 1 ano e 6 meses, atuei no setor contábil, desempenhando tarefas fundamentais como: organização e arquivamento de documentos contábeis, elaboração de planilhas e relatórios financeiros, lançamento de notas e apoio no controle de despesas. Desenvolvi habilidades essenciais como atenção aos detalhes, proatividade e comprometimento em ambientes corporativos.' }
-        ]
-    };
-
-    // --- LÓGICA DO HEADER SUPERIOR ---
-    const header = document.getElementById('main-header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-
-    // --- LÓGICA DE PARTÍCULAS NO CANVAS ---
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let particlesArray;
-
-    class Particle {
-        constructor(x, y, directionX, directionY, size, color) {
-            this.x = x; this.y = y; this.directionX = directionX; this.directionY = directionY;
-            this.size = size; this.color = color;
-        }
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-            ctx.fillStyle = this.color; ctx.fill();
-        }
-        update() {
-            if (this.x > canvas.width || this.x < 0) { this.directionX = -this.directionX; }
-            if (this.y > canvas.height || this.y < 0) { this.directionY = -this.directionY; }
-            this.x += this.directionX; this.y += this.directionY;
-            this.draw();
-        }
-    }
-
-    function initParticles() {
-        particlesArray = [];
-        let numberOfParticles = (canvas.height * canvas.width) / 10000;
-        for (let i = 0; i < numberOfParticles; i++) {
-            let size = (Math.random() * 2) + 0.5;
-            let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-            let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-            let directionX = (Math.random() * .4) - .2;
-            let directionY = (Math.random() * .4) - .2;
-            let color = 'rgb(74, 0, 144)'; // Roxo com menos opacidade
-            particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-        }
-    }
-
-    function animateParticles() {
-        requestAnimationFrame(animateParticles);
-        ctx.clearRect(0, 0, innerWidth, innerHeight);
-        for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-        }
-        connectParticles();
-    }
-
-    function connectParticles() {
-        let opacityValue = 1;
-        for (let a = 0; a < particlesArray.length; a++) {
-            for (let b = a; b < particlesArray.length; b++) {
-                let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                if (distance < (canvas.width / 8) * (canvas.height / 8)) {
-                    opacityValue = 1 - (distance / 20000);
-                    ctx.strokeStyle = `rgba(6, 182, 212, ${opacityValue * 0.3})`; // Ciano com menos opacidade
-                    ctx.lineWidth = 1;
-                    ctx.beginPath();
-                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                    ctx.stroke();
+    // --- 3. CONFIGURAÇÃO DE CLIQUES PARA SCROLL SUAVE ---
+    function setupSmoothScroll() {
+        document.querySelectorAll('[data-scroll-to]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Impede o pulo padrão do navegador
+                const targetId = this.getAttribute('data-scroll-to');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    lenis.scrollTo(targetElement);
                 }
-            }
-        }
-    }
-
-    window.addEventListener('resize', () => { canvas.width = innerWidth; canvas.height = innerHeight; initParticles(); });
-
-    // --- LÓGICA DE BUSCA E POPULAÇÃO DE DADOS ---
-    async function fetchGithubData() {
-        try {
-            const userResponse = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
-            if (!userResponse.ok) throw new Error('Erro ao buscar perfil do GitHub.');
-            const userData = await userResponse.json();
-            document.getElementById('github-avatar').src = userData.avatar_url;
-
-            const reposResponse = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`);
-            if (!reposResponse.ok) throw new Error('Erro ao buscar repositórios do GitHub.');
-            const allRepos = await reposResponse.json();
-
-            // --- ÁREA DE CUSTOMIZAÇÃO ---
-
-            const featuredRepoNames = [
-                'BizManager',
-                'estacionamento',
-                'cloud_village',
-                'Finance-controller',
-            ];
-
-            // Filtra apenas os repositórios que você listou
-            const featuredRepos = allRepos
-                .filter(repo => featuredRepoNames.includes(repo.name))
-                .map(repo => {
-                    switch (repo.name) {
-                        case 'BizManager':
-                            repo.custom_title = 'BizManager';
-                            repo.custom_description = 'O BizManager é um aplicativo robusto e intuitivo, desenhado especificamente para empoderar microempreendedores, centralizando e simplificando a administração de seus negócios.';
-                            repo.custom_language = 'TypeScript, React Native, Node.js & Expo';
-                            break;
-                        case 'estacionamento':
-                            repo.custom_title = 'Estacionamento';
-                            repo.custom_description = 'App desenvolvido para gerenciar um estacionamento, com funcionalidades de cadastro de veículos, controle de entrada e saída, e geração de relatórios.Atividade feita em aula de React Native.';
-                            repo.custom_language = 'JavaScript, React Native, Node.js & Expo';
-                            break;
-                        case 'cloud_village':
-                            repo.custom_title = 'Cloud Village';
-                            repo.custom_description = 'O Cloud Village é um sistema de gerenciamento de condomínio que permite administrar moradores e veículos de forma eficiente.';
-                            repo.custom_language = 'HTML, CSS, JavaScript, Node.js & Express';
-                            break;
-                        case 'Finance-controller':
-                            repo.custom_title = 'Finance Controller';
-                            repo.custom_description = 'O Finance Controller é uma aplicação em Python que auxilia na gestão financeira pessoal, permitindo o controle de transações, visualização de gráficos e categorização de despesas e receitas.';
-                            repo.custom_language = 'Python, PyQt5, SQLite';
-                            break;
-                    }
-                    // Garante que a descrição customizada seja usada, ou a padrão do GitHub.
-                    repo.display_description = repo.custom_description || repo.description || 'Um dos meus projetos no GitHub. Explore o repositório para saber mais.';
-                    return repo;
-                })
-                // Ordena os repositórios filtrados para corresponder à ordem da sua lista
-                .sort((a, b) => featuredRepoNames.indexOf(a.name) - featuredRepoNames.indexOf(b.name));
-
-            displayProjects(featuredRepos);
-
-        } catch (error) {
-            console.error(error);
-            document.getElementById('projects-grid').innerHTML = `<p class="text-red-400 col-span-full text-center">${error.message}</p>`;
-        } finally {
-            const spinner = document.getElementById('loading-spinner');
-            if (spinner) spinner.style.display = 'none';
-        }
-    }
-
-    function displayProjects(repos) {
-        const projectsGrid = document.getElementById('projects-grid');
-        projectsGrid.innerHTML = '';
-
-        repos.forEach((repo, index) => {
-            const projectCard = document.createElement('div');
-            projectCard.className = 'project-card';
-            projectCard.style.transitionDelay = `${index * 100}ms`;
-
-            // Usa o título customizado se existir, senão usa o nome do repo
-            const title = repo.custom_title || repo.name.replace(/-/g, ' ');
-            // Usa a linguagem customizada se existir, senão usa a padrão
-            const language = repo.custom_language || repo.language;
-
-            projectCard.innerHTML = `
-            <div>
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-xl font-bold text-white">${title}</h3>
-                    <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-purple-400 transition-colors">
-                       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                </div>
-                <p class="text-slate-400 text-sm mb-4 h-24">${repo.display_description}</p> 
-            </div>
-            <div>
-                ${language ? `<p class="text-sm text-purple-400 font-mono">${language}</p>` : ''}
-            </div>
-        `;
-            projectsGrid.appendChild(projectCard);
+            });
         });
     }
+    setupSmoothScroll();
 
-    function populateLinkedInData() {
-        document.getElementById('about-text').textContent = LINKEDIN_DATA.about;
-        const skillsList = document.getElementById('skills-list');
-        skillsList.innerHTML = '';
-        LINKEDIN_DATA.skills.forEach(skill => {
-            skillsList.innerHTML += `<span class="bg-slate-800 text-purple-300 text-xs font-semibold px-3 py-1 rounded-full">${skill}</span>`;
-        });
-        const timeline = document.getElementById('experience-timeline');
-        timeline.innerHTML = '';
-        LINKEDIN_DATA.experience.forEach((job) => {
-            const item = document.createElement('div');
-            item.className = 'timeline-card';
-            item.innerHTML = `
-                <h3 class="text-lg font-semibold text-slate-200">${job.role} <span class="text-purple-400">- ${job.company}</span></h3>
-                <time class="block my-1 text-sm font-normal leading-none text-gray-500">${job.period}</time>
-                <p class="text-base font-normal text-slate-400">${job.description}</p>`;
-            timeline.appendChild(item);
-        });
-    }
+    // --- 4. RENDERIZAÇÃO ---
+    renderPortfolio(PORTFOLIO_DATA);
 
-    // --- LÓGICA DE ANIMAÇÕES E INTERAÇÕES ---
-    const revealObserver = new IntersectionObserver((entries) => {
+    // --- 5. OUTROS EFEITOS ---
+    if (window.matchMedia("(min-width: 1024px)").matches) initCustomCursor();
+    initMagneticButtons();
+    typeWriterEffect(["Full Stack Developer", "Automação Inteligente", "Soluções Criativas"]);
+    initParticles();
+    updateActiveNav();
+
+    // Reveal on Scroll
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal-animation').forEach(section => { revealObserver.observe(section); });
-
-    const menuLinks = document.querySelectorAll('.menu-link');
-    const sections = document.querySelectorAll('main section');
-    const menuObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const sectionId = entry.target.id;
-                menuLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.dataset.section === sectionId) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }, { rootMargin: '-50% 0px -50% 0px' });
-    sections.forEach(section => menuObserver.observe(section));
-
-    // --- INICIALIZAÇÃO DAS FUNÇÕES ---
-    initParticles();
-    animateParticles();
-    fetchGithubData();
-    populateLinkedInData();
+    document.querySelectorAll('.reveal-section').forEach(section => observer.observe(section));
 });
 
+
+// --- FUNÇÕES AUXILIARES DE RENDERIZAÇÃO ---
+async function renderPortfolio(data) {
+    try {
+        const aboutEl = document.getElementById('about-text');
+        if (aboutEl) aboutEl.textContent = data.linkedinData.about;
+
+        const skillsEl = document.getElementById('skills-list');
+        if (skillsEl) {
+            skillsEl.innerHTML = '';
+            data.linkedinData.skills.forEach(skill => {
+                skillsEl.innerHTML += `<span class="skill-tag hover-trigger">${skill}</span>`;
+            });
+        }
+
+        let githubRepos = [];
+        try {
+            const response = await fetch(`https://api.github.com/users/${data.githubUsername}/repos`);
+            if (response.ok) githubRepos = await response.json();
+        } catch (e) { console.warn("GitHub Offline"); }
+
+        const projectsEl = document.getElementById('projects-grid');
+        if (projectsEl) {
+            projectsEl.innerHTML = '';
+            data.featuredProjects.forEach((proj, i) => {
+                const realRepo = githubRepos.find(r => r.name === proj.repoName) || {};
+                const repoUrl = realRepo.html_url || `https://github.com/${data.githubUsername}/${proj.repoName}`;
+                const delay = i * 100;
+
+                const card = document.createElement('div');
+                card.className = 'card-glass p-8 flex flex-col justify-between h-full reveal-section hover-trigger';
+                card.style.transitionDelay = `${delay}ms`;
+
+                const tagsHtml = proj.tags ? proj.tags.map(t => `<span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2 py-1 rounded">${t}</span>`).join('') : '';
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex gap-2 mb-3">${tagsHtml}</div>
+                            <a href="${repoUrl}" target="_blank" class="text-slate-400 hover:text-white transition hover-trigger">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">${proj.customTitle}</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">${proj.customDescription}</p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5">
+                        <p class="text-xs font-mono text-purple-400">${proj.customLanguage}</p>
+                    </div>
+                `;
+                projectsEl.appendChild(card);
+            });
+        }
+
+        const timelineEl = document.getElementById('experience-timeline');
+        if (timelineEl) {
+            timelineEl.innerHTML = '';
+            data.linkedinData.experience.forEach((exp, index) => {
+                const item = document.createElement('div');
+                item.className = `timeline-item reveal-section`;
+                item.style.transitionDelay = `${index * 100}ms`;
+                item.innerHTML = `
+                    <span class="timeline-point hidden md:block"></span>
+                    <div class="card-glass p-6 hover:bg-white/5 transition cursor-none hover-trigger">
+                        <span class="text-cyan-400 font-mono text-xs tracking-widest uppercase">${exp.period}</span>
+                        <h3 class="text-xl font-bold text-white mt-2">${exp.role}</h3>
+                        <h4 class="text-purple-400 font-medium mb-3 text-sm">${exp.company}</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">${exp.description}</p>
+                    </div>
+                `;
+                timelineEl.appendChild(item);
+            });
+        }
+        reattachCursorListeners();
+        setTimeout(() => { document.querySelectorAll('.reveal-section').forEach(el => el.classList.add('visible')); }, 500);
+    } catch (e) { console.error(e); }
+}
+
+// --- OUTRAS FUNÇÕES ---
+function initCustomCursor() {
+    const dot = document.querySelector('.cursor-dot');
+    const outline = document.querySelector('.cursor-outline');
+    if (!dot || !outline) return;
+    let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
+    window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; dot.style.left = `${mouseX}px`; dot.style.top = `${mouseY}px`; });
+    function animate() {
+        outlineX += (mouseX - outlineX) * 0.15; outlineY += (mouseY - outlineY) * 0.15;
+        outline.style.left = `${outlineX}px`; outline.style.top = `${outlineY}px`;
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+function reattachCursorListeners() {
+    document.querySelectorAll('.hover-trigger, a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+    });
+}
+function initMagneticButtons() {
+    document.querySelectorAll('.magnetic-btn').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const deltaX = ((e.clientX - rect.left - rect.width / 2) / 4);
+            const deltaY = ((e.clientY - rect.top - rect.height / 2) / 4);
+            btn.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1.05)`;
+        });
+        btn.addEventListener('mouseleave', () => btn.style.transform = 'translate(0, 0) scale(1)');
+    });
+}
+function typeWriterEffect(texts) {
+    let count = 0, index = 0, currentText = "", letter = "";
+    (function type() {
+        if (count === texts.length) count = 0;
+        currentText = texts[count];
+        letter = currentText.slice(0, ++index);
+        const target = document.getElementById('typing-text');
+        if (target) target.textContent = letter;
+        if (letter.length === currentText.length) { count++; index = 0; setTimeout(type, 2000); }
+        else { setTimeout(type, 100); }
+    }());
+}
+function updateActiveNav() {
+    const sections = document.querySelectorAll('section');
+    const dots = document.querySelectorAll('.nav-dot, .dock-icon');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(sec => { if (scrollY >= (sec.offsetTop - sec.clientHeight / 3)) current = sec.getAttribute('id'); });
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+            if (dot.getAttribute('href').includes(current)) dot.classList.add('active');
+        });
+    });
+}
+function initParticles() {
+    const canvas = document.getElementById('particle-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    let particles = Array.from({ length: 30 }, () => ({
+        x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+        size: Math.random() * 2, speedX: Math.random() * 0.2 - 0.1, speedY: Math.random() * 0.2 - 0.1
+    }));
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(139, 92, 246, 0.2)';
+        particles.forEach(p => {
+            p.x += p.speedX; p.y += p.speedY;
+            if (p.x < 0) p.x = canvas.width; else if (p.x > canvas.width) p.x = 0;
+            if (p.y < 0) p.y = canvas.height; else if (p.y > canvas.height) p.y = 0;
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+        });
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
