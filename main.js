@@ -180,18 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     tags: ["Web", "Fullstack"]
                 }
             ],
-            testimonials: [
-                {
-                    name: "Alexandre Silva",
-                    role: "Tech Lead na Portal Brasil",
-                    text: "Caetano tem uma habilidade única de ver o problema de negócio por trás do código. Suas automações nos pouparam horas."
-                },
-                {
-                    name: "Sarah Connor",
-                    role: "Gerente de Projetos",
-                    text: "Criativo, rápido e detalhista. Ele transformou nosso fluxo de planilhas caótico em um script Python impecável."
-                }
-            ]
         },
         common: {
             skills: [
