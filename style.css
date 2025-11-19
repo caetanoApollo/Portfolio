@@ -5,34 +5,41 @@
     --glass-border: rgba(255, 255, 255, 0.08);
 }
 
-/* --- CORREÇÃO DO CANVAS (O ERRO ERA AQUI) --- */
 #particle-canvas {
     position: fixed;
-    /* Fixa no fundo */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    /* Joga para trás de tudo */
     pointer-events: none;
-    /* Permite clicar através dele */
 }
 
-/* Esconde cursor padrão em Desktop */
+/* --- MELHORIA UX CURSOR (ACESSIBILIDADE) --- */
 @media (min-width: 1024px) {
 
-    body,
+    /* Oculta cursor padrão apenas no corpo */
+    body {
+        cursor: none;
+    }
+
+    /* Restaura cursor padrão e ponteiro em elementos interativos para evitar 'lag' */
     a,
     button,
+    .hover-trigger,
     input,
-    textarea,
-    .magnetic-btn {
-        cursor: none !important;
+    textarea {
+        cursor: pointer !important;
+    }
+
+    /* Esconde o cursor customizado quando estiver sobre um link (hovering) */
+    body.hovering .cursor-dot,
+    body.hovering .cursor-outline {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
     }
 }
 
-/* --- CURSOR PERSONALIZADO --- */
 .cursor-dot {
     width: 8px;
     height: 8px;
@@ -44,6 +51,8 @@
     transform: translate(-50%, -50%);
     z-index: 9999;
     pointer-events: none;
+    /* Garante que o clique passe */
+    transition: opacity 0.2s, transform 0.2s;
 }
 
 .cursor-outline {
@@ -57,22 +66,11 @@
     transform: translate(-50%, -50%);
     z-index: 9998;
     pointer-events: none;
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    /* Garante que o clique passe */
+    transition: width 0.2s, height 0.2s, background-color 0.2s, opacity 0.2s;
 }
 
-body.hovering .cursor-outline {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: transparent;
-    backdrop-filter: blur(2px);
-}
-
-body.hovering .cursor-dot {
-    transform: translate(-50%, -50%) scale(0.5);
-}
-
-/* --- LAYOUT GERAL --- */
+/* --- LAYOUT --- */
 html.lenis {
     height: auto;
 }
@@ -88,7 +86,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Background Noise e Gradiente */
 .bg-noise::before {
     content: "";
     position: fixed;
@@ -125,7 +122,6 @@ body {
     }
 }
 
-/* Textos e Animações */
 .bg-300\% {
     background-size: 300% 300%;
 }
@@ -148,7 +144,6 @@ body {
     }
 }
 
-/* Cards Glassmorphism */
 .card-glass {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
@@ -164,7 +159,6 @@ body {
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
 }
 
-/* Botões */
 .btn-primary {
     background: #fff;
     color: #000;
@@ -187,7 +181,7 @@ body {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Navegação e Dock */
+/* DOCK & NAV */
 .glass-dock {
     background: rgba(20, 20, 30, 0.6);
     backdrop-filter: blur(20px);
@@ -248,7 +242,7 @@ body {
     pointer-events: none;
 }
 
-/* Timeline */
+/* TIMELINE */
 .timeline-item {
     position: relative;
     margin-left: 2rem;
@@ -290,24 +284,6 @@ body {
     }
 }
 
-/* Animação de Fade In (Entrada) */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translate3d(0, -20px, 0);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-.animate-fade-in-down {
-    animation: fadeInDown 1s ease-out forwards;
-}
-
-/* Reveal on Scroll */
 .reveal-section {
     opacity: 0;
     transform: translateY(50px);
@@ -333,4 +309,20 @@ body {
     background: rgba(139, 92, 246, 0.1);
     border-color: var(--primary);
     color: #fff;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -20px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown 1s ease-out forwards;
 }

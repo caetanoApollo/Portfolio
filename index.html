@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caetano Apollo | Full-Stack Developer</title>
+
+    <meta name="description"
+        content="Portfólio de Caetano Apollo - Desenvolvedor Full Stack e Especialista em Automação.">
+    <meta property="og:title" content="Caetano Apollo | Creative Developer">
+    <meta property="og:description"
+        content="Transformando processos em código. Veja meus projetos em React Native, Python e Automação.">
+    <meta property="og:url" content="https://caetanoapollo.github.io/Portfolio/">
+    <meta property="og:type" content="website">
 
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22white%22/><text x=%2250%22 y=%2262%22 font-family=%22monospace%22 font-weight=%22bold%22 font-size=%2250%22 text-anchor=%22middle%22 fill=%22black%22>CA.</text></svg>">
@@ -26,6 +34,11 @@
     <div class="gradient-bg"></div>
     <canvas id="particle-canvas"></canvas>
 
+    <button id="lang-toggle"
+        class="fixed top-6 right-6 md:top-10 md:right-10 z-50 btn-secondary px-4 py-2 text-sm font-mono font-bold uppercase hover-trigger bg-black/50 backdrop-blur-md border border-white/20 rounded-full transition-all hover:scale-110 hover:bg-white/10">
+        PT
+    </button>
+
     <header class="fixed top-6 left-6 md:top-10 md:left-10 z-40">
         <a href="#home" class="group flex items-center gap-3 hover-trigger" data-scroll-to="#home">
             <div
@@ -36,11 +49,16 @@
     </header>
 
     <nav class="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-8">
-        <a href="#home" class="nav-dot active hover-trigger" data-tooltip="Início" data-scroll-to="#home"></a>
-        <a href="#about" class="nav-dot hover-trigger" data-tooltip="Sobre" data-scroll-to="#about"></a>
-        <a href="#work" class="nav-dot hover-trigger" data-tooltip="Projetos" data-scroll-to="#work"></a>
-        <a href="#experience" class="nav-dot hover-trigger" data-tooltip="Jornada" data-scroll-to="#experience"></a>
-        <a href="#contact" class="nav-dot hover-trigger" data-tooltip="Contato" data-scroll-to="#contact"></a>
+        <a href="#home" class="nav-dot active hover-trigger" data-i18n-tooltip="nav_home" data-tooltip="Home"
+            data-scroll-to="#home"></a>
+        <a href="#about" class="nav-dot hover-trigger" data-i18n-tooltip="nav_about" data-tooltip="About"
+            data-scroll-to="#about"></a>
+        <a href="#work" class="nav-dot hover-trigger" data-i18n-tooltip="nav_projects" data-tooltip="Projects"
+            data-scroll-to="#work"></a>
+        <a href="#experience" class="nav-dot hover-trigger" data-i18n-tooltip="nav_journey" data-tooltip="Journey"
+            data-scroll-to="#experience"></a>
+        <a href="#contact" class="nav-dot hover-trigger" data-i18n-tooltip="nav_contact" data-tooltip="Contact"
+            data-scroll-to="#contact"></a>
     </nav>
 
     <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden">
@@ -59,7 +77,7 @@
             <a href="#work" class="dock-icon" data-scroll-to="#work"><svg class="w-5 h-5" fill="none"
                     stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 01-2 2H6a2 2 0 01-2-2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
                     </path>
                 </svg></a>
             <a href="#experience" class="dock-icon" data-scroll-to="#experience"><svg class="w-5 h-5" fill="none"
@@ -74,9 +92,9 @@
 
         <section id="home" class="min-h-screen flex flex-col items-center text-center pt-40 md:pt-48 pb-20">
 
-            <div
-                class="inline-block px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-sm text-cyan-300 mb-8 animate-fade-in-down">
-                    Disponível para novos projetos
+            <div class="inline-block px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-sm text-cyan-300 mb-8 animate-fade-in-down"
+                data-i18n="available_badge">
+                Available for new projects
             </div>
 
             <h1
@@ -94,7 +112,8 @@
                 <a href="#work"
                     class="magnetic-btn btn-primary group relative overflow-hidden hover-trigger shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                     data-scroll-to="#work">
-                    <span class="relative z-10 group-hover:text-white transition-colors">Ver Projetos</span>
+                    <span class="relative z-10 group-hover:text-white transition-colors"
+                        data-i18n="btn_view_projects">View Projects</span>
                     <div
                         class="absolute inset-0 bg-black scale-0 group-hover:scale-150 transition-transform duration-500 rounded-full origin-center -z-0">
                     </div>
@@ -115,12 +134,13 @@
                     </div>
                 </div>
                 <div class="md:col-span-8 card-glass p-8 md:p-12 flex flex-col justify-center">
-                    <h2 class="section-title mb-6">Sobre Mim</h2>
-                    <p id="about-text" class="text-lg md:text-xl text-slate-300 leading-relaxed font-light">Carregando
-                        informações...</p>
+                    <h2 class="section-title mb-6" data-i18n="section_about">About Me</h2>
+                    <p id="about-text" class="text-lg md:text-xl text-slate-300 leading-relaxed font-light"
+                        data-i18n="loading">Loading info...</p>
                 </div>
                 <div class="md:col-span-12 card-glass p-8">
-                    <h3 class="text-slate-400 mb-6 font-mono text-sm uppercase tracking-widest">Tech Stack & Ferramentas
+                    <h3 class="text-slate-400 mb-6 font-mono text-sm uppercase tracking-widest"
+                        data-i18n="section_stack">Tech Stack & Tools
                     </h3>
                     <div id="skills-list" class="flex flex-wrap gap-3"></div>
                 </div>
@@ -129,15 +149,21 @@
 
         <section id="work" class="py-24 reveal-section">
             <div class="flex justify-between items-end mb-12">
-                <h2 class="section-title">Projetos Recentes</h2>
+                <h2 class="section-title" data-i18n="section_projects">Recent Projects</h2>
             </div>
             <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </section>
 
         <section id="experience" class="py-24 reveal-section max-w-4xl mx-auto">
-            <h2 class="section-title text-center mb-16">Minha Jornada</h2>
+            <h2 class="section-title text-center mb-16" data-i18n="section_journey">My Journey</h2>
             <div id="experience-timeline"
                 class="space-y-8 relative before:content-[''] before:absolute before:left-4 md:before:left-1/2 before:top-0 before:bottom-0 before:w-px before:bg-slate-800">
+            </div>
+        </section>
+
+        <section id="testimonials" class="py-24 reveal-section max-w-6xl mx-auto">
+            <h2 class="section-title text-center mb-12" data-i18n="section_testimonials">Testimonials</h2>
+            <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
             </div>
         </section>
 
@@ -147,16 +173,17 @@
                     class="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-cyan-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                 </div>
                 <div class="relative z-10">
-                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-8">Vamos criar algo incrível?</h2>
-                    <a href="mailto:caetanosilveira1908@gmail.com"
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-8" data-i18n="contact_title">Let's create
+                        something amazing?</h2>
+                    <a href="https://calendly.com/caetanosilveira1908/new-meeting" target="_blank"
                         class="magnetic-btn inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-transform hover-trigger">
-                        <span>Enviar Email</span>
+                        <span data-i18n="btn_schedule">Schedule a Talk</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <footer class="py-8 text-center text-slate-600 text-sm font-mono">
+        <footer class="py-8 text-center text-slate-600 text-sm font-mono" data-i18n="footer_text">
             © 2025 Caetano Apollo. Design & Code.
         </footer>
     </main>
