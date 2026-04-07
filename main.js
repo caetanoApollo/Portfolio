@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const DATA = {
         pt: {
-            aboutText: "Sou Caetano Apollo, estudante de Engenharia de Software e fundador da Async Studio. Minha missão é construir arquiteturas sólidas, transformar processos ineficientes em automações inteligentes e desenvolver o BizManager. Eu não escrevo apenas linhas de código — eu construo ferramentas que escalam negócios reais.",
+            aboutText: "Sou Caetano Apollo, graduando de Engenharia de Software e fundador da Async Studio. Minha missão é construir arquiteturas sólidas, transformar processos ineficientes em automações inteligentes e desenvolver o BizManager. Eu não escrevo apenas linhas de código — eu construo ferramentas que escalam negócios reais.",
             experience: [
                 { role: "CEO & Software Engineer", company: "Async Studio", period: "2026 - Presente", description: "Liderança estratégica da marca e engenharia do BizManager, ERP focado em PMEs." },
                 { role: "Analista de Inovação", company: "Portal Brasil", period: "Jan 2026 - Presente", description: "Engenharia de fluxos com Power Automate para automação de operações vitais." },
