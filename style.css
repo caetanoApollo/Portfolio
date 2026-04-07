@@ -10,9 +10,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-* {
-    /* No mobile nós mantemos o cursor normal para não interferir no touch. O JS já cuida de ocultar as divs. */
-}
+/* No mobile nós mantemos o cursor normal para não interferir no touch. O JS já cuida de ocultar as divs. */
 
 @media (min-width: 768px) {
     * {
